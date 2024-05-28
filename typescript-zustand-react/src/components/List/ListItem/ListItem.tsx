@@ -1,41 +1,40 @@
-import {FC} from "react";
-import {ButtonAdd} from "../../ButtonAdd/ButtonAdd";
+import {ButtonAdd} from "../../ButtonAdd";
 import imgEmptyCheck from "../../../assets/circle.png"
 import imgFillCheck from "../../../assets/check-circle.png"
 import "./ListItem.css"
 import {Todo} from "../../../Todo";
 
 
-interface ListItemProps {
+interface Props {
     todo: Todo;
     checkTodo: (id: Todo['id']) => void;
     deleteTodo: (id: Todo['id']) => void;
 }
-export const ListItem: FC<ListItemProps> = ({ todo, checkTodo, deleteTodo }) => {
+export const ListItem = (props: Props) => {
     return (
         <div className={"item_container"}>
             <div className={"item_container__text"}>
                 <div className={"item_container__text__name"}>
-                    <img src={todo.checked ? imgFillCheck : imgEmptyCheck} className={"item_container__text__name"}
-                        onClick={() => checkTodo(todo.id)}/>
+                    <img src={props.todo.checked ? imgFillCheck : imgEmptyCheck} className={"item_container__text__name"}
+                        onClick={() => props.checkTodo(props.todo.id)}/>
 
                     <div
                          style={{
-                             opacity: todo.checked ? 0.5 : 1,
-                             textDecoration: todo.checked ? 'line-through' : 'none'
+                             opacity: props.todo.checked ? 0.5 : 1,
+                             textDecoration: props.todo.checked ? 'line-through' : 'none'
                          }}
-                         onClick={() => checkTodo(todo.id)}
+                         onClick={() => props.checkTodo(props.todo.id)}
                     >
-                        {todo.name}
+                        {props.todo.name}
                     </div>
                 </div>
 
                 <div className={"item_container__text__description"}>
-                    {todo.description}
+                    {props.todo.description}
                 </div>
             </div>
             <div>
-                <ButtonAdd color={'red'} onClick={() => deleteTodo(todo.id)}>
+                <ButtonAdd color={'red'} onClick={() => props.deleteTodo(props.todo.id)}>
                     Удалить
                 </ButtonAdd>
             </div>

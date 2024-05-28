@@ -1,8 +1,13 @@
 import React, {ChangeEvent, FC} from "react";
-import {ButtonAdd} from "../ButtonAdd/ButtonAdd";
+import {ButtonAdd} from "../ButtonAdd";
 import './Todo.css';
 
-const defaultTodo = {
+type Todo = {
+    name: string;
+    description: string;
+}
+
+const defaultTodo: Todo = {
     name: '',
     description: ''
 };
@@ -13,7 +18,7 @@ interface TodoProps {
 
 export const Todo: FC<TodoProps> = ({ addTodo }) => {
 
-    const [todo, setTodo] = React.useState(defaultTodo);
+    const [todo, setTodo] = React.useState<Todo>(defaultTodo);
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {name, value} = event.target

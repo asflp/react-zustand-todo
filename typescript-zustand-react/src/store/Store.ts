@@ -1,7 +1,5 @@
 import create from "zustand";
-
-import { Todo } from "./Todo";
-import {useEffect} from "react";
+import { Todo } from "../Todo";
 
 interface TodoState {
     todos: Todo[];

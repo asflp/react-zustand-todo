@@ -1,7 +1,5 @@
-import {Header} from "./components/Header/Header";
-import {Todo} from "./components/Todo/Todo";
-import {useStore} from "./Store";
-import {List} from "./components/List/List"
+import {Header, List, Todo} from "./components";
+import {useStore} from "./store/Store";
 import "./App.css"
 import {useEffect} from "react";
 

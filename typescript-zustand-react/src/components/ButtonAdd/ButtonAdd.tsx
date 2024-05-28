@@ -1,14 +1,14 @@
-import React, {FC} from "react";
+import React from "react";
 import "./ButtonAdd.css"
 
-interface ButtonProps extends React.ComponentPropsWithRef<'button'>{
+interface Props extends React.ComponentPropsWithRef<'button'>{
     color: 'blue' | 'red';
 }
 
-export const ButtonAdd: FC<ButtonProps> = ({children, color, onClick, ...props}) => {
-    const className = `button button_${color}`
+export const ButtonAdd= (props: Props) => {
+    const className = `button button_${props.color}`
 
-    return <button type={"button"} className={className} onClick={onClick} {...props}>
-        {children}
+    return <button type={"button"} className={className} onClick={props.onClick} {...props}>
+        {props.children}
     </button>
 }
